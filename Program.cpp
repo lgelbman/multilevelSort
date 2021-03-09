@@ -15,9 +15,9 @@ const int CUT_OFF = 100000000;
 
 
 int main() {
-    int array[] = {2,5,1,4,7,4,6,21,45,2,3,45,43,49};
-    quickSort(array, 14);
-    for (int i = 0; i < 14; i++) {
+    int array[] = {2,5,1,4,7,4,6,21,100,7,45,2,3,45,43,49,65,123,2,34,54};
+    quickSort(array, 21);
+    for (int i = 0; i < 21; i++) {
         cout << array[i] << endl;
     }
     return 0;
@@ -71,7 +71,7 @@ void swap(int* num1, int* num2) {
 void quickSort(int array[], int size) {
     if (size > 1) {
         int* pivot = partition(array, size);
-        quickSort(array, sizeOfSubArray(array, pivot) - 1);
+        quickSort(array, sizeOfSubArray(array, pivot));
         quickSort(pivot + 1, (size - sizeOfSubArray(array, pivot)));
     }
 }
@@ -86,7 +86,7 @@ int* partition(int array[], int size) {
         }
     }
     swap(pivot, ptr1);
-    return pivot;
+    return ptr1;
 }
 
 int sizeOfSubArray(int* start, int* end) {
